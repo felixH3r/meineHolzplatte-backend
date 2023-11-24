@@ -52,6 +52,36 @@ const plugins = [
       },
     },
   },
+  {
+    resolve: `medusa-plugin-mailjet`,
+    options: {
+      public_key: process.env.MAILJET_PUBLIC_KEY, //required
+      private_key: process.env.MAILJET_PRIVATE_KEY, //required
+      from: 'Meine-Holzplatte no-reply@meineholzplatte.at', //Name[space]email
+      template_error_reporting: 'Meine-Holzplatte no-reply@meineholzplatte.at', //to use mailjet's template error reporting
+      customer_created_template: '5347431',
+      gift_card_created_template: '5347431',
+      order_placed_template: '5347431',
+      order_canceled_template: '5347431',
+      order_shipped_template: '5347431',
+      order_completed_template: '5347431',
+      user_password_reset_template: '5347431',
+      customer_password_reset_template: '5347431',
+      localization: {
+        'de-DE': {
+          // locale key
+          customer_created_template: '5347431',
+          gift_card_created_template: '5347431',
+          order_placed_template: '5347431',
+          order_canceled_template: '5347431',
+          order_shipped_template: '5347431',
+          order_completed_template: '5347431',
+          user_password_reset_template: '5347431',
+          customer_password_reset_template: '5347431',
+        },
+      },
+    },
+  }
 ];
 
 const modules = {
