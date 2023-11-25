@@ -58,26 +58,26 @@ const plugins = [
       public_key: process.env.MAILJET_PUBLIC_KEY, //required
       private_key: process.env.MAILJET_PRIVATE_KEY, //required
       from: 'Meine-Holzplatte no-reply@meineholzplatte.at', //Name[space]email
-      template_error_reporting: 'Meine-Holzplatte no-reply@meineholzplatte.at', //to use mailjet's template error reporting
-      customer_created_template: '5347431',
-      gift_card_created_template: '5347431',
-      order_placed_template: '5347431',
-      order_canceled_template: '5347431',
-      order_shipped_template: '5347431',
-      order_completed_template: '5347431',
-      user_password_reset_template: '5347431',
-      customer_password_reset_template: '5347431',
+      template_error_reporting: 'Meine-Holzplatte f.hermanutz@icloud.com', //to use mailjet's template error reporting
+      customer_created_template: process.env.MAILJET_TEMPLATE,
+      gift_card_created_template: process.env.MAILJET_TEMPLATE,
+      order_placed_template: process.env.MAILJET_TEMPLATE,
+      order_canceled_template: process.env.MAILJET_TEMPLATE,
+      order_shipped_template: process.env.MAILJET_TEMPLATE,
+      order_completed_template: process.env.MAILJET_TEMPLATE,
+      user_password_reset_template: process.env.MAILJET_TEMPLATE,
+      customer_password_reset_template: process.env.MAILJET_TEMPLATE,
       localization: {
         'de-DE': {
           // locale key
-          customer_created_template: '5347431',
-          gift_card_created_template: '5347431',
-          order_placed_template: '5347431',
-          order_canceled_template: '5347431',
-          order_shipped_template: '5347431',
-          order_completed_template: '5347431',
-          user_password_reset_template: '5347431',
-          customer_password_reset_template: '5347431',
+          customer_created_template: process.env.MAILJET_TEMPLATE,
+          gift_card_created_template: process.env.MAILJET_TEMPLATE,
+          order_placed_template: process.env.MAILJET_TEMPLATE,
+          order_canceled_template: process.env.MAILJET_TEMPLATE,
+          order_shipped_template: process.env.MAILJET_TEMPLATE,
+          order_completed_template: process.env.MAILJET_TEMPLATE,
+          user_password_reset_template: process.env.MAILJET_TEMPLATE,
+          customer_password_reset_template: process.env.MAILJET_TEMPLATE,
         },
       },
     },
@@ -85,7 +85,7 @@ const plugins = [
 ];
 
 const modules = {
-  /*eventBus: {
+  eventBus: {
     resolve: "@medusajs/event-bus-redis",
     options: {
       redisUrl: REDIS_URL
@@ -96,7 +96,7 @@ const modules = {
     options: {
       redisUrl: REDIS_URL
     }
-  },*/
+  },
 };
 
 /** @type {import('@medusajs/medusa').ConfigModule["projectConfig"]} */
