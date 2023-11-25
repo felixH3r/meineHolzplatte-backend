@@ -67,6 +67,7 @@ const plugins = [
       order_completed_template: process.env.MAILJET_TEMPLATE,
       user_password_reset_template: process.env.MAILJET_TEMPLATE,
       customer_password_reset_template: process.env.MAILJET_TEMPLATE,
+      invite_created: process.env.MAILJET_TEMPLATE,
       localization: {
         'de-DE': {
           // locale key
