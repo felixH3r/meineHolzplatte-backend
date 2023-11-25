@@ -61,10 +61,10 @@ const plugins = [
       template_path: process.env.SES_TEMPLATE_PATH,
       subject_template_type: process.env.RESEND_SUBJECT_TEMPLATE_TYPE,
       body_template_type: process.env.RESEND_BODY_TEMPLATE_TYPE,
-      order_placed_template: 'test-template',
-      order_shipped_template: 'test-template',
-      customer_password_reset_template: 'test-template',
-      gift_card_created_template: 'test-template',
+      order_placed_template: 'test_template',
+      order_shipped_template: 'test_template',
+      customer_password_reset_template: 'test_template',
+      gift_card_created_template: 'test_template',
       //order_canceled_template: 'order_canceled',
       //order_refund_created_template: 'order_refund_created',
       //order_return_requested_template: 'order_return_requested',
@@ -73,7 +73,7 @@ const plugins = [
       //swap_shipment_created_template: 'swap_shipment_created',
       //swap_received_template: 'swap_received',
       //claim_shipment_created_template: 'claim_shipment_created',
-      user_password_reset_template: 'test-template',
+      user_password_reset_template: 'test_template',
       //medusa_restock_template: 'medusa_restock',
     }
   }
