@@ -36,13 +36,13 @@ const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
 const plugins = [
   `medusa-fulfillment-manual`,
   `medusa-payment-manual`,
-  {
-    resolve: `@medusajs/file-local`,
-    options: {
-      upload_dir: "uploads",
-      backend_url: 'https://backend.meine-holzplatte.com'
-    },
-  },
+  // {
+  //   resolve: `@medusajs/file-local`,
+  //   options: {
+  //     upload_dir: "uploads",
+  //     backend_url: 'https://backend.meine-holzplatte.com'
+  //   },
+  // },
   {
     resolve: "@medusajs/admin",
     /** @type {import('@medusajs/admin').PluginOptions} */
@@ -54,30 +54,47 @@ const plugins = [
     },
   },
   {
-    resolve: `medusa-plugin-resend`,
+    resolve: `medusa-file-s3`,
     options: {
-      api_key: process.env.RESEND_API_ID,
-      from: process.env.SES_FROM,
-      enable_endpoint: process.env.SES_ENABLE_ENDPOINT,
-      template_path: process.env.SES_TEMPLATE_PATH,
-      subject_template_type: process.env.RESEND_SUBJECT_TEMPLATE_TYPE,
-      body_template_type: process.env.RESEND_BODY_TEMPLATE_TYPE,
-      order_placed_template: 'test_template',
-      order_shipped_template: 'test_template',
-      customer_password_reset_template: 'test_template',
-      gift_card_created_template: 'test_template',
-      //order_canceled_template: 'order_canceled',
-      //order_refund_created_template: 'order_refund_created',
-      //order_return_requested_template: 'order_return_requested',
-      //order_items_returned_template: 'order_items_returned',
-      //swap_created_template: 'swap_created',
-      //swap_shipment_created_template: 'swap_shipment_created',
-      //swap_received_template: 'swap_received',
-      //claim_shipment_created_template: 'claim_shipment_created',
-      user_password_reset_template: 'test_template',
-      //medusa_restock_template: 'medusa_restock',
+      s3_url: process.env.S3_URL,
+      bucket: process.env.S3_BUCKET,
+      region: process.env.S3_REGION,
+      access_key_id: process.env.S3_ACCESS_KEY_ID,
+      secret_access_key: process.env.S3_SECRET_ACCESS_KEY,
+      cache_control: process.env.S3_CACHE_CONTROL,
+      // optional
+      download_file_duration:
+      process.env.S3_DOWNLOAD_FILE_DURATION,
+      prefix: process.env.S3_PREFIX,
     }
-  },
+  }
+
+
+  // {
+  //   resolve: `medusa-plugin-resend`,
+  //   options: {
+  //     api_key: process.env.RESEND_API_ID,
+  //     from: process.env.SES_FROM,
+  //     enable_endpoint: process.env.SES_ENABLE_ENDPOINT,
+  //     template_path: process.env.SES_TEMPLATE_PATH,
+  //     subject_template_type: process.env.RESEND_SUBJECT_TEMPLATE_TYPE,
+  //     body_template_type: process.env.RESEND_BODY_TEMPLATE_TYPE,
+  //     order_placed_template: 'test_template',
+  //     order_shipped_template: 'test_template',
+  //     customer_password_reset_template: 'test_template',
+  //     gift_card_created_template: 'test_template',
+  //     //order_canceled_template: 'order_canceled',
+  //     //order_refund_created_template: 'order_refund_created',
+  //     //order_return_requested_template: 'order_return_requested',
+  //     //order_items_returned_template: 'order_items_returned',
+  //     //swap_created_template: 'swap_created',
+  //     //swap_shipment_created_template: 'swap_shipment_created',
+  //     //swap_received_template: 'swap_received',
+  //     //claim_shipment_created_template: 'claim_shipment_created',
+  //     user_password_reset_template: 'test_template',
+  //     //medusa_restock_template: 'medusa_restock',
+  //   }
+  // },
 
 
   // {
