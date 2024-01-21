@@ -36,13 +36,6 @@ const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
 const plugins = [
   `medusa-fulfillment-manual`,
   `medusa-payment-manual`,
-  // {
-  //   resolve: `@medusajs/file-local`,
-  //   options: {
-  //     upload_dir: "uploads",
-  //     backend_url: 'https://backend.meine-holzplatte.com'
-  //   },
-  // },
   {
     resolve: "@medusajs/admin",
     /** @type {import('@medusajs/admin').PluginOptions} */
@@ -67,9 +60,24 @@ const plugins = [
       process.env.S3_DOWNLOAD_FILE_DURATION,
       prefix: process.env.S3_PREFIX,
     }
+  },
+  {
+    resolve: `medusa-payment-stripe`,
+    options: {
+      api_key: process.env.STRIPE_API_KEY,
+      webhook_secret: process.env.STRIPE_WEBHOOK_SECRET,
+    },
   }
 
 
+
+// {
+  //   resolve: `@medusajs/file-local`,
+  //   options: {
+  //     upload_dir: "uploads",
+  //     backend_url: 'https://backend.meine-holzplatte.com'
+  //   },
+  // },
   // {
   //   resolve: `medusa-plugin-resend`,
   //   options: {
