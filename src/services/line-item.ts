@@ -16,7 +16,7 @@ export default class LineItemService extends MedusaLineItemService {
     const itemWidth = lineItem.metadata.width as number / 1000;
     const itemLength = lineItem.metadata.length as number / 1000;
     const qmeter =  itemWidth * itemLength;
-    return lineItem.basePrice * qmeter;
+    return Math.round(lineItem.basePrice * qmeter);
 
   }
 
