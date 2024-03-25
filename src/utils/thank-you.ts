@@ -57,7 +57,7 @@ export const createThankYouEmail = (
 <body>
   <div class="container">
     <div class="header">
-      <h1>Danke, ${order.customer.first_name} ${order.customer.last_name}!</h1>
+      <h1>Danke, ${order.customer}!</h1>
     </div>
     <div class="invoice-details">
       <p><strong>Invoice Number:</strong> ${order.id}</p>
