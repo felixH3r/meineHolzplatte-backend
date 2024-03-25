@@ -32,7 +32,7 @@ export default class EmailSenderService extends AbstractNotificationService {
   }> {
     if (event === "order.placed") {
       const order = await this.orderService_.retrieve(data.id);
-      this.emailClient_.emails.send({
+      await this.emailClient_.emails.send({
         from: "Felix Hermanutz <felix@meine-holzplatte.com>",
         to: order.email,
         subject: "Danke für deinen Einkauf!",
