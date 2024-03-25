@@ -2,6 +2,7 @@ import { AbstractNotificationService, OrderService } from "@medusajs/medusa";
 import { Resend } from "resend";
 import * as process from "process";
 import { EntityManager } from "typeorm";
+import {createThankYouEmail} from "../utils/thank-you";
 
 export default class EmailSenderService extends AbstractNotificationService {
   static identifier = "email-sender";
@@ -35,7 +36,7 @@ export default class EmailSenderService extends AbstractNotificationService {
         from: "Felix Hermanutz <felix@meine-holzplatte.com>",
         to: order.email,
         subject: "Danke für deinen Einkauf!",
-        html: "<strong>Meine Holzplatte bedankt sich rech herzlich für Ihren einkauf! Bis bald!</strong>",
+        html: createThankYouEmail(order),
       });
 
       return Promise.resolve({
