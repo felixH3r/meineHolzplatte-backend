@@ -26,12 +26,12 @@
     "debug": "node --inspect-brk ./bin/www"
   },
   "dependencies": {
-    "@medusajs/admin": "7.1.7",
+    "@medusajs/admin": "7.1.12",
     "@medusajs/cache-inmemory": "^1.8.9",
     "@medusajs/cache-redis": "^1.8.9",
     "@medusajs/event-bus-local": "^1.9.7",
     "@medusajs/event-bus-redis": "^1.8.10",
-    "@medusajs/medusa": "1.20.2",
+    "@medusajs/medusa": "1.20.4",
     "@tanstack/react-query": "4.22.0",
     "babel-preset-medusa-package": "^1.1.13",
     "body-parser": "^1.19.0",
@@ -42,7 +42,7 @@
     "medusa-fulfillment-manual": "1.1.40",
     "medusa-interfaces": "1.3.9",
     "medusa-payment-manual": "1.0.24",
-    "medusa-payment-stripe": "6.0.7",
+    "medusa-payment-stripe": "6.0.9",
     "medusa-plugin-resend": "1.1.0",
     "prism-react-renderer": "^2.0.4",
     "resend": "^2.0.0",
