@@ -38,6 +38,7 @@ export default class EmailSenderService extends AbstractNotificationService {
         subject: "Danke für deinen Einkauf!",
         html: createThankYouEmail(order),
       });
+      console.log(order, 'order object');
 
       return Promise.resolve({
         to: order.email,
