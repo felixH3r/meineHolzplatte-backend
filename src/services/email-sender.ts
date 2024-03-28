@@ -36,9 +36,8 @@ export default class EmailSenderService extends AbstractNotificationService {
         from: "Felix Hermanutz <felix@meine-holzplatte.com>",
         to: order.email,
         subject: "Danke für deinen Einkauf!",
-        html: createThankYouEmail(order),
+        html: '<span>Yes it works again!</span>',
       });
-      console.log(order, 'order object');
 
       return Promise.resolve({
         to: order.email,
