@@ -36,6 +36,7 @@ export default class EmailSenderService extends AbstractNotificationService {
       const order = await this.orderService_.retrieve(data.id, {
         select: [
             'cart_id',
+            'email',
             'items',
         ],
         relations: [
