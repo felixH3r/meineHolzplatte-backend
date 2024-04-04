@@ -34,14 +34,9 @@ export default class EmailSenderService extends AbstractNotificationService {
   }> {
     if (event === "order.placed") {
       const order = await this.orderService_.retrieve(data.id, {
-        select: [
-            'cart_id',
-            'email',
-            'items',
-        ],
         relations: [
             'cart',
-            'items'
+            'items',
         ]
       });
       const cart = await this.cartService_.retrieve(order.cart_id);
