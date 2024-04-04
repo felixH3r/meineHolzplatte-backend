@@ -35,19 +35,20 @@ export default class EmailSenderService extends AbstractNotificationService {
     if (event === "order.placed") {
       const order = await this.orderService_.retrieve(data.id, {
         relations: [
-            'cart',
             'items',
+            'customer',
+            'shipping_address',
         ]
       });
-      const cart = await this.cartService_.retrieve(order.cart_id);
+      // const cart = await this.cartService_.retrieve(order.cart_id);
+      console.log(order, 'order');
       await this.emailClient_.emails.send({
         from: "Felix Hermanutz <felix@meine-holzplatte.com>",
         to: order.email,
         subject: "Danke für deinen Einkauf!",
         html: createThankYouEmail(order),
       });
-      console.log(order, 'order');
-      console.log(cart, 'cart');
+
 
       return Promise.resolve({
         to: order.email,
