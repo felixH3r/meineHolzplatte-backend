@@ -1,4 +1,4 @@
-import { AbstractNotificationService, OrderService } from "@medusajs/medusa";
+import {AbstractNotificationService, CartService, OrderService} from "@medusajs/medusa";
 import { Resend } from "resend";
 import * as process from "process";
 import { EntityManager } from "typeorm";
@@ -7,11 +7,13 @@ import {createThankYouEmail} from "../utils/thank-you";
 export default class EmailSenderService extends AbstractNotificationService {
   static identifier = "email-sender";
   protected orderService_: OrderService;
+  protected cartService_: CartService;
   protected emailClient_: Resend;
 
   constructor(container, options) {
     super(container);
     this.orderService_ = container.orderService;
+    this.cartService_ = container.cartService
     this.emailClient_ = new Resend("re_a94mnc1J_AWo2zdd1zb2mf5XUogAXUC9x");
   }
 
@@ -31,7 +33,19 @@ export default class EmailSenderService extends AbstractNotificationService {
     data: Record<string, unknown>;
   }> {
     if (event === "order.placed") {
-      const order = await this.orderService_.retrieve(data.id);
+      const order = await this.orderService_.retrieve(data.id, {
+        select: [
+            'cart_id',
+            'items',
+        ],
+        relations: [
+            'product',
+            'store',
+            'variants',
+            'line-item'
+        ]
+      });
+      const cart = await this.cartService_.retrieve(order.cart_id);
       await this.emailClient_.emails.send({
         from: "Felix Hermanutz <felix@meine-holzplatte.com>",
         to: order.email,
@@ -39,6 +53,7 @@ export default class EmailSenderService extends AbstractNotificationService {
         html: createThankYouEmail(order),
       });
       console.log(order, 'order');
+      console.log(cart, 'cart');
 
       return Promise.resolve({
         to: order.email,

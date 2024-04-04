@@ -12,6 +12,7 @@ export const createThankYouEmail = (
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body style="background-color:#ffffff;font-family:Arial">
+  <div>${order}</div>
     <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="max-width:100%;margin:10px auto;width:600px;border:1px solid #E5E5E5">
       <tbody>
         <tr style="width:100%">
