@@ -40,7 +40,7 @@ export default class EmailSenderService extends AbstractNotificationService {
         ],
         relations: [
             'cart',
-            'product'
+            'items'
         ]
       });
       const cart = await this.cartService_.retrieve(order.cart_id);
