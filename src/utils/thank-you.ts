@@ -1,4 +1,25 @@
-import {Order} from "@medusajs/medusa";
+import {LineItem, Order} from "@medusajs/medusa";
+
+const loopItems = (items: LineItem[]) => {
+  let htmlString = '';
+  for(let item of items){
+    htmlString += `
+      <tr style="width:100%;">
+        <td data-id="__react-email-column" width="150px">
+            <img src="${item.thumbnail}" style="display:block;outline:none;border:none;text-decoration:none;float:left" width="100px" />
+        </td>
+        <td data-id="__react-email-column" style="vertical-align:top;text-align: right;">
+            <p style="font-size:14px;line-height:2;margin:0;font-weight:500">${item.title}</p>
+            <p style="font-size:14px;line-height:2;margin:0;color:#747474;font-weight:500">Variant title</p>
+            <p style="font-size:14px;line-height:2;margin:0;color:#747474;font-weight:500">${item.metadata.length}mm x ${item.metadata.width}mm</p>
+            <p style="font-size:14px;line-height:2;margin:0;font-weight:500">Anzahl: ${item.quantity}</p>
+            <p style="font-size:14px;line-height:2;margin:0;font-weight:700">€ ${item.unit_price}</p>
+        </td>
+      </tr>
+    `
+  }
+  return htmlString;
+}
 
 export const createThankYouEmail = (
     order: Order
@@ -46,19 +67,13 @@ export const createThankYouEmail = (
               </tbody>
             </table>
             <hr style="width:100%;border:none;border-top:1px solid #eaeaea;border-color:#E5E5E5;margin:0" />
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-left:40px;padding-right:40px;padding-top:40px;padding-bottom:40px">
+            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-left:40px;padding-right:40px;padding-top:20px;padding-bottom:20px">
               <tbody>
                 <tr>
                   <td>
-                    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation">
+                    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="20px" role="presentation">
                       <tbody style="width:100%">
-                        <tr style="width:100%">
-                          <td data-id="__react-email-column"><img alt="Brazil 2022/23 Stadium Away Women&#x27;s Nike Dri-FIT Soccer Jersey" src="${order.items[0].thumbnail}" style="display:block;outline:none;border:none;text-decoration:none;float:left" width="100px" /></td>
-                          <td data-id="__react-email-column" style="vertical-align:center;padding-left:50px">
-                            <p style="font-size:14px;line-height:2;margin:0;font-weight:500">${order.items[0].title}</p>
-                            <p style="font-size:14px;line-height:2;margin:0;color:#747474;font-weight:500">Size L (12–14)</p>
-                          </td>
-                        </tr>
+                        ${loopItems(order.items)}
                       </tbody>
                     </table>
                   </td>
@@ -70,21 +85,22 @@ export const createThankYouEmail = (
               <tbody>
                 <tr>
                   <td>
-                    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="display:inline-flex;>
+                    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="20px" role="presentation" style="display:inline-flex;>
                       <tbody style="width:100%">
                         <tr style="width:100%">
                           <td data-id="__react-email-column" style="width:170px">
-                            <p style="font-size:14px;line-height:2;margin:0;font-weight:bold">Order ID:</p>
+                            <p style="font-size:14px;line-height:1.6;margin:0;font-weight:bold">Bestellnummer:</p>
                             <p style="font-size:14px;line-height:1.4;margin:12px 0 0 0;font-weight:500;color:#6F6F6F">${order.id}</p>
                           </td>
-                          <td data-id="__react-email-column">
-                            <p style="font-size:14px;line-height:2;margin:0;font-weight:bold">Order Date</p>
+                        </tr>
+                        <tr>
+                           <td data-id="__react-email-column">
+                            <p style="font-size:14px;line-height:1.6;margin:0;font-weight:bold">Bestelldatum:</p>
                             <p style="font-size:14px;line-height:1.4;margin:12px 0 0 0;font-weight:500;color:#6F6F6F">${order.created_at}</p>
                           </td>
                         </tr>
                       </tbody>
                     </table>
-                  
                   </td>
                 </tr>
               </tbody>
